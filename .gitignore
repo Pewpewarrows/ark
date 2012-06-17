@@ -1,0 +1,31 @@
+# Much thanks to GitHub's gitignore repo
+
+# Generic
+log/*.log
+tmp/*.db
+
+# Operating System
+.DS_Store
+.DS_Store?
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+.cache
+Thumbs.db
+Desktop.ini
+
+# Editor
+*~
+*.sw[a-p]
+*.bak
+tags
+TAGS
+
+# Build
+bin
+
+# Language
+
+# Project
+
