@@ -1,18 +1,26 @@
-APP = ArkEngine
+APP = Ark
 
 SRCEXT = cc
 SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
+INCDIR = inc
+LIBS =
+LIBDIR =
+FWS = SFML sfml-system sfml-window
 
 SRCS := $(shell find $(SRCDIR) -name '*.$(SRCEXT)')
 SRCDIRS := $(shell find . -name '*.$(SRCEXT)' -exec dirname {} \; | uniq)
 OBJS := $(patsubst %.$(SRCEXT),$(OBJDIR)/%.o,$(SRCS))
 
 DEBUG = -g
-INCLUDES = -I./inc
-CFLAGS = -Wall -pedantic -ansi -c $(DEBUG) $(INCLUDES)
-LDFLAGS =
+INCLUDES = $(addprefix -I,$(INCDIR))
+LIBRARIES = $(addprefix -l,$(LIBS))
+LIBRARYDIR = $(addprefix -L,$(LIBDIR))
+FRAMEWORKS = $(addprefix -framework ,$(FWS))
+
+CFLAGS = -Wall -pedantic -ansi -c $(DEBUG) $(INCLUDES) $(LIBRARIES) $(LIBRARYDIR)
+LDFLAGS = $(FRAMEWORKS)
 
 ifeq ($(SRCEXT), cc)
 	CC = $(CXX)
@@ -74,7 +82,7 @@ endef
 # 	~/.virtualenvs/mml_redux/bin/pip install -r conf/requirements.txt
 
 run:
-	./bin/ArkEngine
+	./bin/Ark
 
 # deploy:
 # 	git push --all
