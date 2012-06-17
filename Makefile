@@ -7,7 +7,7 @@ BINDIR = bin
 INCDIR = inc
 LIBS =
 LIBDIR =
-FWS = SFML sfml-system sfml-window
+FWS = OpenGL SFML sfml-graphics sfml-window sfml-system sfml-audio sfml-network
 
 SRCS := $(shell find $(SRCDIR) -name '*.$(SRCEXT)')
 SRCDIRS := $(shell find . -name '*.$(SRCEXT)' -exec dirname {} \; | uniq)
