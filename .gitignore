@@ -19,6 +19,7 @@ Desktop.ini
 *~
 *.sw[a-p]
 *.bak
+*.sublime-*
 tags
 TAGS
 

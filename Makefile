@@ -1,5 +1,6 @@
 APP = Ark
 
+CXX := clang++
 SRCEXT = cc
 SRCDIR = src
 OBJDIR = obj
@@ -19,8 +20,9 @@ LIBRARIES = $(addprefix -l,$(LIBS))
 LIBRARYDIR = $(addprefix -L,$(LIBDIR))
 FRAMEWORKS = $(addprefix -framework ,$(FWS))
 
-CFLAGS = -Wall -pedantic -ansi -c $(DEBUG) $(INCLUDES) $(LIBRARIES) $(LIBRARYDIR)
-LDFLAGS = $(FRAMEWORKS)
+# -stdlib=libc++
+CFLAGS = -Wall -pedantic -ansi -stdlib=libc++ -c $(DEBUG) $(INCLUDES) $(LIBRARIES) $(LIBRARYDIR)
+LDFLAGS = -stdlib=libc++ $(FRAMEWORKS)
 
 ifeq ($(SRCEXT), cc)
 	CC = $(CXX)
@@ -28,7 +30,7 @@ else
 	CFLAGS += -std-gnu99
 endif
 
-.PHONY: all clean distclean
+.PHONY: all clean distclean run git_clean
 
 all: build_engine
 
